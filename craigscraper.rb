@@ -2,55 +2,11 @@ require 'rubygems'
 require 'mechanize'
 require 'yaml'
 require 'restclient'
-require 'uri'
 require 'json'
 
+require File.expand_path('../google_rest_client.rb', __FILE__)
+
 module CraigScraper
-
-  # This talks to the Google Geocoding API and parses the JSON.
-  class GoogleRestClient
-
-    # main api method
-    def get_coordinates(url)
-
-      # get the address
-      address = get_address(url)
-      return nil if address == nil
-
-      # make a request to the geocoder api
-      geodecode(address)
-    end
-
-
-    private
-
-    # Takes a URL and returns the location string.
-    def get_address(url)
-      url = URI.decode(url)
-      loc = url.split('loc:+')
-      return nil if loc.length == 1
-      loc_str = loc[1]
-    end
-
-    # get rest API url.
-    def get_geocode_url(address)
-      "http://maps.googleapis.com/maps/api/geocode/json?address=" +
-      address + "&sensor=true"
-    end
-
-    # hits google's geocoding api and returns struct coordinates.
-    def geodecode(address)
-      begin
-        url = get_geocode_url(address)
-        response = RestClient.get url
-        json = JSON.parse(response)
-        location = json['results'][0]['geometry']['location']
-        return "#{location['lat']}, #{location['lng']}"
-      rescue
-        return nil
-      end
-    end
-  end
 
   # Actual mechanized scraping.
   class Scraper
@@ -68,19 +24,17 @@ module CraigScraper
       @url = url
     end
 
+    def output(text, href, address)
+      puts "#{text} (#{href}): #{address}"
+    end
+
     def get_map_link(link)
       href = link.href
       @@agent.get(href) do |page|
         page.links.each do |l|
           next unless l.text == 'google map'
-          coordinates = @@rest_client.get_coordinates(l.href)
-          if coordinates
-            @num_coordinates += 1
-            puts "#{link.text} (#{link.href}): #{coordinates}"
-          else
-            puts "#{link.text} (#{link.href}): #{l.href}"
-            @num_total += 1
-          end
+          address = @@rest_client.get_address(l.href)
+          output(link.text, href, address)
         end
       end
     end

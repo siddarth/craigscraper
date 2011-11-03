@@ -1,0 +1,19 @@
+== About
+
+Craigscraper can be used to scrape listings from craigslist. Craigscraper
+uses PStore to manage duplicates, based on a simple hash table to eliminate
+similar postings.
+
+== Usage
+
+Download a copy of it:
+
+    $ git clone git://github.com/siddarth/craigscraper.git
+
+Run the script in the correct directory.
+
+    $ cd craigscraper/
+    $ ./craigscraper
+
+The output is stored in listings.txt, and should also be printed to standard
+out.

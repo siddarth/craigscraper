@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require File.expand_path('../craig.rb', __FILE__)
+
+def get_url(n)
+  "http://newyork.craigslist.org/roo/index#{100*n}.html"
+end
+
+for i in 2..100
+  url = get_url(i)
+  CraigScraper::Scraper.new(url).get_links()
+end

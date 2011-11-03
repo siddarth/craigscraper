@@ -5,6 +5,7 @@ require 'restclient'
 require 'json'
 
 require File.expand_path('../google_rest_client.rb', __FILE__)
+require File.expand_path('../craigvault.rb', __FILE__)
 
 module CraigScraper
 
@@ -13,13 +14,12 @@ module CraigScraper
 
     def initialize(url)
       @@ignore = YAML.load_file('config.yaml')['ignore']
-
-      @num_coordinates = 0
-      @num_total = 0
+      @vault = CraigVault.new
 
       @@agent = Mechanize.new { |agent|
         agent.user_agent_alias = 'Mac Safari'
       }
+
       @@rest_client = GoogleRestClient.new
       @url = url
     end
@@ -34,7 +34,7 @@ module CraigScraper
         page.links.each do |l|
           next unless l.text == 'google map'
           address = @@rest_client.get_address(l.href)
-          output(link.text, href, address)
+          output(link.text, href, address) if @vault.process(link.text, address)
         end
       end
     end

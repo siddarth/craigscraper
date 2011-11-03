@@ -13,7 +13,9 @@ module CraigScraper
   class Scraper
 
     def initialize(url)
-      @@ignore = YAML.load_file('config.yaml')['ignore']
+      config = YAML.load_file('config.yaml')
+      @@ignore = config['ignore']
+      @@output = File.new(config['output'], 'a')
       @vault = CraigVault.new
 
       @@agent = Mechanize.new { |agent|
@@ -25,7 +27,9 @@ module CraigScraper
     end
 
     def output(text, href, address)
-      puts "#{text} (#{href}): #{address}"
+      str = "#{text} (#{href}): #{address}\n"
+      print str
+      @@output.write(str)
     end
 
     def get_map_link(link)

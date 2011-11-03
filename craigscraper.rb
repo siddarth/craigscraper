@@ -12,7 +12,7 @@ module CraigScraper
   class Scraper
 
     def initialize(url)
-      @@ignore = ["", "help", "post", "new york craigslist", "housing", "rooms & shares", "all new york", "manhattan", "brooklyn", "queens", "bronx", "staten island", "new jersey", "long island", "westchester", "fairfield", "NYC's worst landlords", "\"foreclosure rescue\" fraud alert", "housing forum", "stating a discriminatory preference in a housing post is illegal", "dial 2-1-1 for social services", "AVOIDING SCAMS & FRAUD", "PERSONAL SAFETY TIPS", "craigslist {tv}", "unofficial flagging faq", "craigslist blog", "success story?"]
+      @@ignore = YAML.load_file('config.yaml')['ignore']
 
       @num_coordinates = 0
       @num_total = 0

@@ -1,0 +1,6 @@
+source 'http://rubygems.org'
+gem 'json'
+gem 'mechanize'
+gem 'restclient'
+gem 'uri'
+gem 'yaml'

@@ -7,12 +7,18 @@ similar postings.
 == Usage
 
 Download a copy of it:
-
     $ git clone git://github.com/siddarth/craigscraper.git
 
-Run the script in the correct directory.
-
+Navigate to the correct directory.
     $ cd craigscraper/
+
+Install bundler:
+    $ gem install bundler
+
+Install the dependencies:
+    $ bundle install
+
+Run the Craigscraper executable.
     $ ./craigscraper
 
 The output is stored in listings.txt, and should also be printed to standard

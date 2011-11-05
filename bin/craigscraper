@@ -1,12 +1,15 @@
 #!/usr/bin/env ruby
 
 require File.expand_path('../../lib/craigscraper.rb', __FILE__)
+require 'yaml'
 
-def get_url(n)
-  "http://newyork.craigslist.org/roo/index#{100*n}.html"
+config = YAML.load_file(File.expand_path('../../config/config.yaml', __FILE__))
+
+if (config['url_fmt'].nil? || config['num_pages'].nil?)
+  raise "Undefined URL or num_pages. Please fix config.yaml."
 end
 
-for i in 2..100
-  url = get_url(i)
+for i in 1..config['num_pages']
+  url = config['url_fmt'] % (i*100)
   CraigScraper::Scraper.new(url).get_links()
 end

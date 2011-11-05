@@ -1,8 +1,7 @@
 == TODO:
 
-1. Handle case where address is same, but the posting is different.
-2. Export options to not write to stdout.
-3. Port backend to mongodb or such.
-4. Use config.yaml better. Currently, is an unholy mess.
-5. Trollop the run script.
-6. Unhardcoded links.
+[ ] Handle case where address is same, but the posting is different.
+[ ] Export options to not write to stdout.
+[ ] Port backend to mongodb or such.
+[x] Use config.yaml better. Currently, is an unholy mess.
+[x] Unhardcoded links.

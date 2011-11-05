@@ -23,3 +23,13 @@ Run the Craigscraper executable.
 
 The output is stored in listings.txt, and should also be printed to standard
 out.
+
+== Sample output
+
+$895 Private Entrance- Huge room- Move in now- get rest of month FREE (http://newyork.craigslist.org/brk/roo/2687043586.html): Pleasant Place at Herkimer New York NY US
+$1375 Two Bedroom Two Bath w/ Rooftop (http://newyork.craigslist.org/mnh/roo/2682510880.html): 76th Street at Central Park West NY NY US
+$600 Avail Dec 1st - Large Furnished Room (http://newyork.craigslist.org/mnh/roo/2675388475.html): 178 New York NY US
+$1350 FULLY FURNISHED BR AVAILABLE DEC 1st (http://newyork.craigslist.org/mnh/roo/2687035909.html): Mulberry st NEW YORK NY US
+$1000 PER PERSON ROOM SHARE (3)BDRM 'OPEN HOUSE MIXERTONIGHT 5PM (http://newyork.craigslist.org/brk/roo/2687034184.html): FRANKLIN at STERLING BROOKLYN NY US
+$1700 2 bdrms in Huge, charming apartment in Brooklyn (http://newyork.craigslist.org/brk/roo/2687028351.html): Woodruff Ave at St. Paul Brooklyn NY US
+ROOM FOR RENT (http://newyork.craigslist.org/brx/roo/2687018506.html): 199 ST BRONX NY US

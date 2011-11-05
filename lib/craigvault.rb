@@ -4,7 +4,7 @@ class CraigVault
 
   def initialize
     # initialize vault
-    @craig_vault = PStore.new('craig.vault')
+    @craig_vault = PStore.new('foobar.vault')
 
     # initialize bundles
     @craig_vault.transaction(false) do

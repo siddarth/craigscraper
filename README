@@ -19,7 +19,7 @@ Install the dependencies:
     $ bundle install
 
 Run the Craigscraper executable.
-    $ ./craigscraper
+    $ bin/craigscraper
 
 The output is stored in listings.txt, and should also be printed to standard
 out.

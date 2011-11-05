@@ -12,8 +12,9 @@ module CraigScraper
   # Actual mechanized scraping.
   class Scraper
 
+    CONFIG_PATH = File.expand_path('../../config/config.yaml', __FILE__)
     def initialize(url)
-      config = YAML.load_file('config.yaml')
+      config = YAML.load_file(CONFIG_PATH)
       @@ignore = config['ignore']
       @@output = File.new(config['output'], 'a')
       @vault = CraigVault.new
